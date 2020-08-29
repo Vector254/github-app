@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {UserRequestService} from '../user-request.service'
 import {Users} from '../users'
+import {Repos} from '../repos'
 
 @Component({
   selector: 'app-search-form',
@@ -8,11 +9,24 @@ import {Users} from '../users'
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
+  
+  @Output() searchUser = new EventEmitter<Users>();
   user:Users;
-  constructor(private userRequest:UserRequestService) { }
+  repo:Repos;
+  username:string;
 
+  
+  constructor(private userService:UserRequestService) { }
+      search(){
+        this.userService.updateData(this.username);
+        this.userService.getDefault()
+        this.user = this.userService.user
+      }
   ngOnInit() {
    
+    this.userService.repoRequest()
+    this.repo=this.userService.repo
+    
   }
 
 }

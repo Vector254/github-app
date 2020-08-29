@@ -5,9 +5,10 @@
   
     <form>
       <div class="form-group">
-            <label for="Name"> Enter Username:</label>
-            <input type="search" class="form-control" value=""><br>
-            <input type="button" id="button" class="form-control" value="Search">
+            <label for="userName"> Enter Username:</label>
+            <input type="search" class="form-control" value=""placeholder="Enter username to search"
+            [(ngModel)]="username" name="username"><br>
+            <input type="button" (click)="search()"id="button" class="form-control" value="Search">
       </div>
     </form>
      </div> 

@@ -5,20 +5,30 @@ import { Repos } from './repos';
 
 
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserRequestService {
   user:Users;
   repo:Repos;
+  results:object[];
+  private userName: string;
+  private apiUrl="https://api.github.com/users/";
+  private defaultUrl="https://api.github.com/users/Vector254";
+  private apiKey="da7f8ded4151528f421722dcb2581652b1d914a3";
+
   constructor(private http:HttpClient) { 
     this.user = new Users("","","",0 ,0,"",);
     this.repo = new Repos("","",new Date,0 ,"",);
+    this.userName = 'Vector254';
+    this.results=[];
   }
-  apiUrl="https://api.github.com/users";
-  defaultUrl="https://api.github.com/users/Vector254";
 
+  
+  updateData(username:string){
+    alert("updated!")
+    this.userName=username;
+  }
   getDefault(){
     interface ApiResponse{
       login: string,
@@ -30,7 +40,7 @@ export class UserRequestService {
       
       }
       let promise = new Promise((resolve,reject)=>{
-        this.http.get<ApiResponse>(this.defaultUrl).toPromise().then(response=>{
+        this.http.get<ApiResponse>(this.apiUrl+this.userName+"?client_id="+this.apiKey).toPromise().then(response=>{
           this.user.login = response.login
           this.user.name = response.name
           this.user.email = response.email
@@ -45,29 +55,30 @@ export class UserRequestService {
 }
 
 
+repoRequest(){
+  interface ApiResponse{
+    name: string,
+    description:string,
+    created_at:Date,
+    forks:number,
+    html_url:string,
+    
+    }
+    let promise = new Promise((resolve,reject)=>{
+      this.http.get<ApiResponse>(this.apiUrl+this.userName+"/repos?client_id="+this.apiKey).toPromise().then(response=>{
+        this.repo.name = response.name
+        this.repo.description = response.description
+        this.repo.created_at = response.created_at
+        this.repo.forks = response.forks
+        this.repo.html_url = response.html_url
 
-
-  userRequest(){
-    interface ApiResponse{
-      login: string,
-      email:string,
-      followers:number,
-      public_repos:number,
-      avatar_url:string,
-      
-      }
-      let promise = new Promise((resolve,reject)=>{
-        this.http.get<ApiResponse>(this.apiUrl).toPromise().then(response=>{
-          this.user.login = response.login
-          this.user.email = response.email
-          this.user.followers = response.followers
-          this.user.public_repos = response.public_repos
-          this.user.avatar_url = response.avatar_url
- 
-          resolve()
-      })
-      return promise
+        resolve()
     })
-  }
+    return promise
+  })
 }
+
+
+  }
+
 

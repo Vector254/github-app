@@ -10,33 +10,33 @@
         </div>
         <div class=" card col-md-8">
             <h5 class="text-center"><b>REPOSITORIES</b> </h5>
-            <ul  class="repos"  >
-              
-             
-              <li>{{repos.name}}</li>
-              <li>{{repos.description}}</li>
-              <li>created on{{repos.created_at}} </li>
-              <li>{{repos.forks}} Forks</li>
+            <ul  class="repos"  *ngFor let repo of Repos>
+              <li>{{repo.name}}</li>
+              <li>{{repo.description}}</li>
+              <li>created on{{repo.created_at}} </li>
+              <li>{{repo.forks}} Forks</li>
             </ul>
          
         </div>
     </div>
+    <div class="panel-body">
     <div class="row">
-        <div id="details" class=" col-md-4">
-            <p><b>Username:</b>{{user.login}}</p>
-            <hr>
-            <p><b>Name:</b>{{user.name}}</p>
-            <hr>
-            <p><b>Email:</b>{{user.email}}</p>
-            <hr>
-            <p><b>Followers:</b>{{user.followers}}</p>
-            <hr>
-            <p><b>Public Repos:</b>{{user.public_repos}}</p>
+        <ul class="list-group" *ngIf="user"id="details" class=" col-md-4">
+            <li class="list-group-item"><b>Username:</b>{{user.login}}</li>
             
+            <li class="list-group-item"><b>Name:</b>{{user.name}}</li>
             
+            <li class="list-group-item"*ngIf="user.email"><b>Email:</b>{{user.email}}</li>
+            
+            <li class="list-group-item"><b>Followers:</b>{{user.followers}}</li>
+            
+            <li class="list-group-item"><b>Public Repos:</b>{{user.public_repos}}</li>
+            <br>
+            <a class="btn btn-success"href="">View profile on github</a>
             
             
           
-        </div>
-    
+        </ul>
+    </div>
+</div>
 </div>

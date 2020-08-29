@@ -1,4 +1,5 @@
 export class Repos {
+    
     constructor(
         public name: string,
         public description:string,
@@ -6,5 +7,5 @@ export class Repos {
         public forks:number,
         public html_url:string
        
-        ){}
-}
+        ){[]}
+    }

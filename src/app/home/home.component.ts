@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(){
     this.userService.getDefault()
     this.user = this.userService.user
+    this.userService.repoRequest()
     this.repos=this.userService.repo
 }
 }
