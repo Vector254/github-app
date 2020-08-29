@@ -1,5 +1,6 @@
 
 <div class="container-fluid">
+
     <div class=" row">
       
         <div class="col-md-4">
@@ -7,18 +8,31 @@
             <img id="image"src="{{user.avatar_url}}" alt=""/>
           
         </div>
+        <div class=" card col-md-8">
+            <h5 class="text-center"><b>REPOSITORIES</b> </h5>
+            <ul *ngFor="let repo of repos" class="repos"  >
+              
+             
+              <li>{{repo.name}}</li>
+              <li>{{repo.description}}</li>
+              <li>created on{{repo.created_at}} </li>
+              <li>{{repo.forks}} Forks</li>
+            </ul>
+         
+        </div>
     </div>
     <div class="row">
         <div id="details" class=" col-md-4">
             <p><b>Username:</b>{{user.login}}</p>
             <hr>
             <p><b>Email:</b>{{user.email}}</p>
+            <hr>
             <p><b>Followers:</b>{{user.followers}}</p>
+            <hr>
             <p><b>Public Repos:</b>{{user.public_repos}}</p>
             
             
           
         </div>
     
-    </div>
 </div>
