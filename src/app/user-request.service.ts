@@ -18,7 +18,7 @@ export class UserRequestService {
   private apiKey="da7f8ded4151528f421722dcb2581652b1d914a3";
 
   constructor(private http:HttpClient) { 
-    this.user = new Users("","","",0 ,0,"",);
+    this.user = new Users("","","",0 ,0,0,"","");
     this.repo = new Repos("","",new Date,0 ,"",);
     this.userName = 'Vector254';
     this.results=[];
@@ -26,10 +26,10 @@ export class UserRequestService {
 
   
   updateData(username:string){
-    alert("updated!")
+   
     this.userName=username;
   }
-  getDefault(){
+  getUser(){
     interface ApiResponse{
       login: string,
       name:string,

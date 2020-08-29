@@ -19,7 +19,7 @@ export class SearchFormComponent implements OnInit {
   constructor(private userService:UserRequestService) { }
       search(){
         this.userService.updateData(this.username);
-        this.userService.getDefault()
+        this.userService.getUser()
         this.user = this.userService.user
       }
   ngOnInit() {
