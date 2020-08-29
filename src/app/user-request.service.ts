@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import{HttpClient} from '@angular/common/http'
 import {Users} from './users'
 import { Repos } from './repos';
-import 'rxjs/add/operator/toPromise';
+
+
 
 
 @Injectable({
@@ -10,10 +11,10 @@ import 'rxjs/add/operator/toPromise';
 })
 export class UserRequestService {
   user:Users;
-  repo:Repos[];
+  repo:Repos;
   constructor(private http:HttpClient) { 
     this.user = new Users("","","",0 ,0,"",);
-    this.repo = [];
+    this.repo = new Repos("","",new Date,0 ,"",);
   }
   apiUrl="https://api.github.com/users";
   defaultUrl="https://api.github.com/users/Vector254";
@@ -42,32 +43,8 @@ export class UserRequestService {
       return promise
   })
 }
-getRepos(){
-  let promise = new Promise((resolve, reject) => {
-    let apiURL = `${this.defaultUrl}/repos`;
-    this.http.get(apiURL)
-        .toPromise()
-        .then(
-            res => { // Success
-              this.repo.map(item => {
-                return new Repos(
-                    item.name,
-                    item.description,
-                    item.created_at,
-                    item.forks,
-                    item.html_url
-                );
-              });
-              // this.results = res.json().results;
-              resolve();
-            },
-            msg => { // Error
-              reject(msg);
-            }
-        );
-  });
-  return promise;
-}
+
+
 
 
   userRequest(){

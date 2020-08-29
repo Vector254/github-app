@@ -10,14 +10,13 @@ import {Repos} from '../repos'
 })
 export class HomeComponent implements OnInit {
   user:Users;
-  repos:Repos[];
+  repos:Repos;
 
   constructor( private userService:UserRequestService) { }
 
   ngOnInit(){
     this.userService.getDefault()
     this.user = this.userService.user
-    this.userService.getRepos()
     this.repos=this.userService.repo
 }
 }
