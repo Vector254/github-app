@@ -1,15 +1,21 @@
 
 <div class="container-fluid">
     <div id="input">
-      <h2 class="text-center">Explore Github</h2>
   
     <form>
       <div class="form-group">
+        <div class="row">
+        <div class="col-md-9">
             <label for="userName"></label>
             <input type="search" class="form-control" value=""placeholder="Enter username to search"
-            [(ngModel)]="username" name="username"><br>
+            [(ngModel)]="username" name="username">
+        </div>
+        <div class="col-md-3">
+          <br>
             <input type="button" (click)="search()"id="button" class="form-control" value="Search">
-      </div>
+        </div>
+        </div>
+          </div>
     </form>
      </div> 
 </div>

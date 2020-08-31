@@ -24,7 +24,7 @@
                 
                 <li class="list-group-item"><b>Public Repos:</b>{{user.public_repos}}</li>
     
-                <li class="list-group-item"><b>Onboard for:</b>{{user.created_at|timePipe}} Days</li>
+                <li class="list-group-item"><b>Onboard for:</b>{{user.created_at|timePipe}}</li>
                 <br>
                 <a class="btn btn-success"href="{{user.html_url}}" target="blank">View profile on github</a>
                 
@@ -39,11 +39,13 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
         <h5 class="text-center"><b>REPOSITORIES</b> </h5>
-        <div  class="repos"  >
-          <h4>{{repos.name}}</h4>
+        <hr>
+        <div class="repos"  >
+          <a href="{{repos.html_url}}"><h4>{{repos.name}}</h4></a>
           <p>{{repos.description}}</p>
-          <p>created on {{repos.created_at}} </p>
+          <p>built {{repos.created_at|timePipe}} ago </p>
           <p>{{repos.forks}} Forks</p>
+          <hr>
         </div>
     </div>
     <div class="col-md-3"></div>

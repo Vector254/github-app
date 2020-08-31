@@ -5,20 +5,33 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimePipePipe implements PipeTransform {
 
-  transform(value: any): number {
-    let today:Date = new Date();
-    let todayWithNoTime:any = new Date(today.getFullYear(),today.getMonth(),today.getDate())
-    var dateDifference =Math.abs(todayWithNoTime - value)
-    const secondsInADay= 86400;
-
-    var dateDifferenceSeconds=dateDifference*0.001; 
-    var dateCounter = dateDifferenceSeconds/secondsInADay;
-
-    if (dateCounter >= 1 && todayWithNoTime > value){
-        return dateCounter;
-    }else{
-        return 0;
+  transform(value: any, args?: any): any {
+    if (value) {
+        const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
+        if (seconds < 29)
+            return 'Just now';
+        const intervals = {
+            'years': 31536000,
+            'month': 2592000,
+            'week': 604800,
+            'day': 86400,
+            'hour': 3600,
+            'minute': 60,
+            'second': 1
+        };
+        let counter;
+        for (const i in intervals) {
+            counter = Math.floor(seconds / intervals[i]);
+            if (counter > 0)
+                if (counter === 1) {
+                    return counter + ' ' + i ;
+                } else {
+                    return counter + ' ' + i ;
+                }
+        }
+    }
+    return value;
     }
   }
 
-}
+

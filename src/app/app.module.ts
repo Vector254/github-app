@@ -11,7 +11,9 @@ import { FormsModule } from '@angular/forms';
 import {UserRequestService} from './user-request.service';
 
 import { AboutComponent } from './about/about.component'
-import {TimePipePipe} from './time-pipe.pipe'
+import {TimePipePipe} from './time-pipe.pipe';
+import { ToarrayPipe } from './toarray.pipe';
+import { ArraypipeComponent } from './arraypipe/arraypipe.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {TimePipePipe} from './time-pipe.pipe'
     SearchFormComponent,
     NavbarComponent,
     TimePipePipe,
-    AboutComponent
+    AboutComponent,
+    ToarrayPipe,
+    ArraypipeComponent
   ],
   imports: [
     BrowserModule,
