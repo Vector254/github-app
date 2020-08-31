@@ -12,7 +12,7 @@ import {UserRequestService} from './user-request.service';
 
 import { AboutComponent } from './about/about.component'
 import {TimePipePipe} from './time-pipe.pipe';
-import { ArrayPipe } from './array.pipe';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { ArrayPipe } from './array.pipe';
     NavbarComponent,
     TimePipePipe,
     AboutComponent,
-    ArrayPipe,
+ 
   
   ],
   imports: [
