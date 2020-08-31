@@ -66,14 +66,14 @@ repoRequest(){
     html_url:string,
    
     
-    }
+  }
     
     var promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse[]>(this.apiUrl+this.userName+"/repos?client_id="+environment.apiKey).toPromise().then((response: any)=>{
+      this.http.get<ApiResponse>(this.apiUrl+this.userName+"/repos?client_id="+environment.apiKey).toPromise().then((response: any)=>{
         
         for(var counter=0; counter <22; counter++){
         var repos=(response[counter]);
-          console.log( repos)
+         
         
           this.repo.name = repos.name,
           this.repo.description = repos.description,
@@ -87,14 +87,14 @@ repoRequest(){
        
         resolve()
         })
-    
+        reject((error) => {console.log(error); });
    
-    return promise;
+      return promise;
     
-  })
+    })
 }
 
 
-  }
+}
 
 
