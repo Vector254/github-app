@@ -1,11 +1,11 @@
 
 <div class="container-fluid">
-    
+    <app-search-form></app-search-form><hr>
 
     <div class=" row">
       
         <div class="col-md-4">
-           <p>{{user.name}}</p>
+           <p class="text-center">{{user.login}}</p>
             <img id="image"src="{{user.avatar_url}}" alt=""/>
           
         </div>
@@ -34,22 +34,27 @@
          <br>
         </div>
     </div>
-   
+    <h5 class="text-center"><b>REPOSITORIES</b> </h5><hr>
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-        <h5 class="text-center"><b>REPOSITORIES</b> </h5>
-        <hr>
-        <div class="repos"  >
-          <a href="{{repos.html_url}}"><h4>{{repos.name}}</h4></a>
-          <p>{{repos.description}}</p>
-          <p>built {{repos.created_at|timePipe}} ago </p>
-          <p>{{repos.forks}} Forks</p>
-          <hr>
+    
+        <div class="col-md-3">
+            <h5><u>name</u></h5>
+            <a href="{{repos.html_url}}"><h4>{{repos.name}}</h4></a>
         </div>
+        
+        <div class="col-md-5">
+            <h5><u>description</u></h5>
+          <p>{{repos.description}}</p>
+        </div>
+    
+    <div class="col-md-4">
+        <h5><u>details</u></h5>
+        <p>built {{repos.created_at|timePipe}} ago </p>
+          <p>{{repos.forks}} Forks</p>
+          
     </div>
-    <div class="col-md-3"></div>
+    
     </div>
-   
+    <hr>
 
 </div>

@@ -12,8 +12,6 @@ import {UserRequestService} from './user-request.service';
 
 import { AboutComponent } from './about/about.component'
 import {TimePipePipe} from './time-pipe.pipe';
-import { ToarrayPipe } from './toarray.pipe';
-import { ArraypipeComponent } from './arraypipe/arraypipe.component'
 
 @NgModule({
   declarations: [
@@ -23,8 +21,7 @@ import { ArraypipeComponent } from './arraypipe/arraypipe.component'
     NavbarComponent,
     TimePipePipe,
     AboutComponent,
-    ToarrayPipe,
-    ArraypipeComponent
+  
   ],
   imports: [
     BrowserModule,

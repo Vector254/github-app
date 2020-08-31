@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import{HttpClient} from '@angular/common/http'
+import{HttpClient,HttpHeaders} from '@angular/common/http'
 import {Users} from './users'
 import { Repos } from './repos';
 import {environment} from '../environments/environment'
@@ -64,28 +64,30 @@ repoRequest(){
     created_at:any,
     forks:number,
     html_url:string,
-    
+   
     
     }
     
     var promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(this.apiUrl+this.userName+"/repos?client_id="+environment.apiKey).toPromise().then((response: any)=>{
-       
+      this.http.get<ApiResponse[]>(this.apiUrl+this.userName+"/repos?client_id="+environment.apiKey).toPromise().then((response: any)=>{
+        
         for(var counter=0; counter <22; counter++){
-        var repos=response[counter];
+        var repos=(response[counter]);
+          console.log( repos)
         
+          this.repo.name = repos.name,
+          this.repo.description = repos.description,
+          this.repo.created_at = repos.created_at,
+          this.repo.forks = repos.forks,
+          this.repo.html_url = repos.html_url
+        }
      
-        console.log(typeof repos)
-        
-       this.repo.name = repos.name,
-       this.repo.description = repos.description,
-       this.repo.created_at = repos.created_at,
-       this.repo.forks = repos.forks,
-       this.repo.html_url = repos.html_url,
+      
+      
        
         resolve()
-        }
-    })
+        })
+    
    
     return promise;
     

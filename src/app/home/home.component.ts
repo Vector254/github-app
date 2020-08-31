@@ -14,9 +14,9 @@ export class HomeComponent implements OnInit {
   
 
   constructor( private userService:UserRequestService) { }
- 
+  
   ngOnInit(){
-    
+   
 
     this.userService.getUser()
     this.user = this.userService.user

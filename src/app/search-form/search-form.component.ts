@@ -14,7 +14,7 @@ export class SearchFormComponent implements OnInit {
   user:Users;
   repo:Repos;
   username:string;
-
+ 
   
   constructor(private userService:UserRequestService) { }
 
@@ -23,11 +23,12 @@ export class SearchFormComponent implements OnInit {
         this.userService.getUser()
         this.user = this.userService.user
         this.userService.repoRequest()
-        this.repo=this.userService.repo
+       this.repo=this.userService.repo
+    
       }
   ngOnInit() {
    
-    
+   
     
   }
 

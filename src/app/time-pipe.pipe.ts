@@ -12,12 +12,12 @@ export class TimePipePipe implements PipeTransform {
             return 'Just now';
         const intervals = {
             'years': 31536000,
-            'month': 2592000,
-            'week': 604800,
-            'day': 86400,
-            'hour': 3600,
-            'minute': 60,
-            'second': 1
+            'months': 2592000,
+            'weeks': 604800,
+            'days': 86400,
+            'hours': 3600,
+            'minutes': 60,
+            'seconds': 1
         };
         let counter;
         for (const i in intervals) {
