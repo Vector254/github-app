@@ -8,14 +8,17 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import {UserRequestService} from './user-request.service'
+import {UserRequestService} from './user-request.service';
+import { ArrayPipe } from './array.pipe'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    ArrayPipe
   ],
   imports: [
     BrowserModule,

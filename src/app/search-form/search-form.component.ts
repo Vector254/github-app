@@ -21,11 +21,12 @@ export class SearchFormComponent implements OnInit {
         this.userService.updateData(this.username);
         this.userService.getUser()
         this.user = this.userService.user
+        this.userService.repoRequest()
+        this.repo=this.userService.repo
       }
   ngOnInit() {
    
-    this.userService.repoRequest()
-    this.repo=this.userService.repo
+    
     
   }
 
