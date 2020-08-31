@@ -7,6 +7,7 @@ export class Users {
     public following:number,
     public public_repos:number,
     public avatar_url,
-    public html_url
+    public html_url,
+    public created_at:Date
     ){}
 }

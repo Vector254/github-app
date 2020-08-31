@@ -4,13 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import {UserRequestService} from './user-request.service';
-import { ArrayPipe } from './array.pipe'
 
+import { AboutComponent } from './about/about.component'
+import {TimePipePipe} from './time-pipe.pipe'
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { ArrayPipe } from './array.pipe'
     HomeComponent,
     SearchFormComponent,
     NavbarComponent,
-    ArrayPipe
+    TimePipePipe,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    
 
   ],
   providers: [UserRequestService],

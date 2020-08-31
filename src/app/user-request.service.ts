@@ -11,13 +11,14 @@ import { Repos } from './repos';
 export class UserRequestService {
   user:Users;
   repo:Repos;
-  results:any;
+  
+  
   private userName: string;
   private apiUrl="https://api.github.com/users/";
   private apiKey="da7f8ded4151528f421722dcb2581652b1d914a3";
 
   constructor(private http:HttpClient) { 
-    this.user = new Users("","","",0 ,0,0,"","");
+    this.user = new Users("","","",0 ,0,0,"","",new Date);
     this.repo = new Repos("","",new Date,0 ,"",);
     this.userName = 'Vector254';
     
@@ -38,7 +39,7 @@ export class UserRequestService {
       avatar_url:string,
       
       }
-      let promise = new Promise((resolve,reject)=>{
+      var promise = new Promise((resolve,reject)=>{
         this.http.get<ApiResponse>(this.apiUrl+this.userName+"?client_id="+this.apiKey).toPromise().then(response=>{
          
           this.user.login = response.login
@@ -66,18 +67,25 @@ repoRequest(){
     
     }
     
-    let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(this.apiUrl+this.userName+"/repos?client_id="+this.apiKey).toPromise().then(response=>{
+    var promise = new Promise((resolve,reject)=>{
+      this.http.get<ApiResponse>(this.apiUrl+this.userName+"/repos?client_id="+this.apiKey).toPromise().then((response: any)=>{
        
-        this.repo.name = response.name,
-        this.repo.description = response.description,
-        this.repo.created_at = response.created_at,
-        this.repo.forks = response.forks,
-        this.repo.html_url = response.html_url
+        for(var counter=0; counter <22; counter++){
+        var repos=response;
         
+        console.log(repos)
+        
+       this.repo.name = repos[counter].name,
+       this.repo.description = repos[counter].description,
+       this.repo.created_at = repos[counter].created_at,
+       this.repo.forks = repos[counter].forks,
+       this.repo.html_url = repos[counter].html_url,
+       
         resolve()
+        }
     })
-    return promise
+   
+    return promise;
     
   })
 }

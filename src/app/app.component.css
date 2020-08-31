@@ -1,3 +1,10 @@
 .container-fluid{
-    background-color: olivedrab;
+   background-color: darkgrey;
+   background-size: cover;
+   padding: 10px;
+}
+.jumbotron{
+    background-image: url(../assets/wall1.jpeg);
+   background-size: cover;
+   color: brown;
 }

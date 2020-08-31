@@ -1,45 +1,53 @@
 
 <div class="container-fluid">
+    
 
     <div class=" row">
       
         <div class="col-md-4">
-           
+           <p>{{user.name}}</p>
             <img id="image"src="{{user.avatar_url}}" alt=""/>
           
         </div>
         <div class="col-md-1"></div>
-        <div class=" card col-md-7">
-            <h5 class="text-center"><b>REPOSITORIES</b> </h5>
-            <ul  class="repos"   *ngFor="let repo of repos">
-              <li>{{repo.name}}</li>
-              <li>{{repo.description}}</li>
-              <li>created on{{repo.created_at}} </li>
-              <li>{{repo.forks}} Forks</li>
+        <div class="panel-body col-md-7">
+            <ul class="list-group" *ngIf="user"id="details">
+                <li class="list-group-item"><b>Username:</b>{{user.login}}</li>
+                
+                <li class="list-group-item"><b>Name:</b>{{user.name}}</li>
+                
+                <li class="list-group-item"*ngIf="user.email"><b>Email:</b>{{user.email}}</li>
+                
+                <li class="list-group-item"><b>Followers:</b>{{user.followers}}</li>
+    
+                <li class="list-group-item"><b>Following:</b>{{user.following}}</li>
+                
+                <li class="list-group-item"><b>Public Repos:</b>{{user.public_repos}}</li>
+    
+                <li class="list-group-item"><b>Onboard for:</b>{{user.created_at|timePipe}} Days</li>
+                <br>
+                <a class="btn btn-success"href="{{user.html_url}}" target="blank">View profile on github</a>
+                
+                
+              
             </ul>
-         
+         <br>
         </div>
     </div>
-    <div class="panel-body">
+   
     <div class="row">
-        <ul class="list-group" *ngIf="user"id="details" class=" col-md-4">
-            <li class="list-group-item"><b>Username:</b>{{user.login}}</li>
-            
-            <li class="list-group-item"><b>Name:</b>{{user.name}}</li>
-            
-            <li class="list-group-item"*ngIf="user.email"><b>Email:</b>{{user.email}}</li>
-            
-            <li class="list-group-item"><b>Followers:</b>{{user.followers}}</li>
-
-            <li class="list-group-item"><b>Following:</b>{{user.following}}</li>
-            
-            <li class="list-group-item"><b>Public Repos:</b>{{user.public_repos}}</li>
-            <br>
-            <a class="btn btn-success"href="{{user.html_url}}" target="blank">View profile on github</a>
-            
-            
-          
-        </ul>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+        <h5 class="text-center"><b>REPOSITORIES</b> </h5>
+        <div  class="repos"  >
+          <h4>{{repos.name}}</h4>
+          <p>{{repos.description}}</p>
+          <p>created on {{repos.created_at}} </p>
+          <p>{{repos.forks}} Forks</p>
+        </div>
     </div>
-</div>
+    <div class="col-md-3"></div>
+    </div>
+   
+
 </div>
