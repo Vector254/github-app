@@ -12,6 +12,7 @@ import {UserRequestService} from './user-request.service';
 
 import { AboutComponent } from './about/about.component'
 import {TimePipePipe} from './time-pipe.pipe';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {TimePipePipe} from './time-pipe.pipe';
     NavbarComponent,
     TimePipePipe,
     AboutComponent,
+    FooterComponent,
  
   
   ],
