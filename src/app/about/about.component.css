@@ -1,0 +1,9 @@
+.jumbotron{
+    background-image: url(../../assets/wall1.jpeg);
+    background-color: lightblue;
+   background-size: cover;
+   color: brown;
+}
+#tell{
+    color: brown;
+}
