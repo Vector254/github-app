@@ -10,17 +10,32 @@ import {Repos} from '../repos'
 })
 export class HomeComponent implements OnInit {
   user:Users;
-  repos:Repos;
-  
+  repos:any;
+  username:string
 
-  constructor( private userService:UserRequestService) { }
- 
-  ngOnInit(){
+  constructor( private userService:UserRequestService) { 
+   
     
+    this.userService.getRepos().subscribe(repo =>{
+      this.userService.updateData(this.username)
+      console.log(repo)
+      this.repos = repo
+  });
+}
+search(){
 
+  this.userService.updateData(this.username)
+  this.userService.getUser()
+  this.user = this.userService.user
+  this.userService.getRepos().subscribe(repo =>{
+    console.log(repo)
+    this.repos = repo
+  });
+}
+  ngOnInit(){
+     
     this.userService.getUser()
     this.user = this.userService.user
-    this.userService.repoRequest()
-    this.repos=this.userService.repo
+    
   }
 }

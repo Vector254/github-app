@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import{HttpClient,HttpHeaders} from '@angular/common/http'
+import{HttpClient} from '@angular/common/http'
 import {Users} from './users'
-import { Repos } from './repos';
+
 import {environment} from '../environments/environment'
 
 
@@ -10,23 +10,22 @@ import {environment} from '../environments/environment'
 })
 export class UserRequestService {
   user:Users;
-  repo:Repos;
+  repo:any;
   
   
-  private userName: string;
+  private username: string;
   private apiUrl="https://api.github.com/users/";
 
   constructor(private http:HttpClient) { 
     this.user = new Users("","","",0 ,0,0,"","",new Date);
-    this.repo = new Repos("","",new Date,0 ,"",);
-    this.userName = 'Vector254';
+    this.username = 'Vector254';
     
   }
 
   
   updateData(username:string){
    
-    this.userName=username;
+    this.username=username;
   }
   getUser(){
     interface ApiResponse{
@@ -40,7 +39,7 @@ export class UserRequestService {
       
       }
       var promise = new Promise((resolve,reject)=>{
-        this.http.get<ApiResponse>(this.apiUrl+this.userName+"?client_id="+environment.apiKey).toPromise().then(response=>{
+        this.http.get<ApiResponse>(this.apiUrl+this.username+"?client_id="+environment.apiKey).toPromise().then(response=>{
          
           this.user.login = response.login
           this.user.name = response.name
@@ -55,46 +54,13 @@ export class UserRequestService {
       return promise
   })
 }
+getRepos(){
+  return this.http.get("https://api.github.com/users/" +this.username + "/repos?client_id=" + environment.apiKey)
+}
 
 
-repoRequest(){
-  interface ApiResponse{
-    name: string,
-    description:string,
-    created_at:any,
-    forks:number,
-    html_url:string,
-   
-    
   }
-    
-    var promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(this.apiUrl+this.userName+"/repos?client_id="+environment.apiKey).toPromise().then((response: any)=>{
-        
-        for(var counter=0; counter <22; counter++){
-        var repos=(response[counter]);
-         
-        
-          this.repo.name = repos.name,
-          this.repo.description = repos.description,
-          this.repo.created_at = repos.created_at,
-          this.repo.forks = repos.forks,
-          this.repo.html_url = repos.html_url
-        }
-     
-      
-      
-       
-        resolve()
-        })
-        reject((error) => {console.log(error); });
-   
-      return promise;
-    
-    })
-}
 
 
-}
 
 

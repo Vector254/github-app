@@ -1,6 +1,25 @@
 
 <div class="container-fluid">
-    <app-search-form></app-search-form><hr>
+    <i class="fab fa-github"></i>
+    <div id="input">
+  
+    <form>
+      <div class="form-group">
+        <div class="row">
+        <div class="col-md-9">
+            <label for="userName"></label>
+            <input type="search" class="form-control" value=""placeholder="Enter username to search"
+            [(ngModel)]="username" name="username">
+        </div>
+        <div class="col-md-3">
+          <br>
+            <input type="button" (click)="search()"id="button" class="form-control" value="Search">
+        </div>
+        </div>
+          </div>
+    </form>
+     </div> 
+<hr>
 
     <div class=" row">
       
@@ -36,25 +55,27 @@
     </div>
     <h5 class="text-center"><b>REPOSITORIES</b> </h5><hr>
     <div class="row">
-    
-        <div class="col-md-3">
-            <h5><u>name</u></h5>
-            <a href="{{repos.html_url}}"><h4>{{repos.name}}</h4></a>
+        <div class="col-md-3"><h5 class="text-center"><u>name</u></h5></div>
+        <div class="col-md-5"><h5><u>description</u></h5></div>
+        <div class="col-md-4"><h5><u>details</u></h5></div>
+    </div>
+    <div id="repos"*ngFor='let repo of repos'class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3"> 
+            <a href="{{repo.html_url}}"><h4>{{repo.name}}</h4></a>
         </div>
         
-        <div class="col-md-5">
-            <h5><u>description</u></h5>
-          <p>{{repos.description}}</p>
+        <div class="col-md-4">
+          <p>{{repo.description}}</p>
         </div>
     
-    <div  class="col-md-4">
-        <h5><u>details</u></h5>
-        <p>built {{repos.created_at|timePipe}} ago </p>
-          <p>{{repos.forks}} Forks</p>
-          
+        <div  class="col-md-3">
+            <p>built {{repo.created_at|timePipe}} ago </p>
+            <p>{{repo.forks}} Forks</p>     
+        </div>
+        <div class="col-md-1"></div>
     </div>
     
-    </div>
-    <hr>
+    
 
 </div>
