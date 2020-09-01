@@ -30,7 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    
+  
 
   ],
   providers: [UserRequestService],
